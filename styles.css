@@ -510,3 +510,150 @@ footer p {
         gap: 1rem;
     }
 }
+
+/* Header */
+header {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+/* Nuevo: El logo es ahora un enlace con cursor */
+.logo a {
+    cursor: pointer;
+    display: block;
+}
+
+/* Navegación mejorada */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* REGLAS GLOBALES PARA EL MENÚ HAMBURGUESA (SIEMPRE ACTIVO Y SCROLLABLE) */
+.nav-links {
+    /* Estado inicial: Oculto a la derecha en todas las pantallas (mobile-first) */
+    position: fixed;
+    right: 0;
+    top: 60px; /* Ajuste para que empiece justo debajo del header */
+    width: 100%;
+    max-width: 300px; /* Ancho del menú desplegable */
+    height: calc(100vh - 60px); /* Altura: El resto de la altura visible */
+    
+    /* Estilos de apariencia */
+    display: flex;
+    flex-direction: column; /* Apilamiento vertical */
+    list-style: none;
+    gap: 0;
+    background-color: #000000; /* Color de fondo del menú desplegable */
+    padding: 20px 0;
+    box-shadow: -5px 0 15px rgba(255, 255, 255, 0.05);
+    z-index: 999;
+    
+    /* Animación para ocultar/mostrar (deslizable) */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    
+    /* SCROLLING: IMPORTANTE para que las categorías quepan */
+    overflow-y: auto; 
+}
+
+/* Estilo para los elementos de la lista */
+.nav-links li {
+    width: 100%;
+    margin: 0;
+}
+
+/* Estilo para los enlaces del menú */
+.nav-links li a {
+    display: block;
+    padding: 12px 20px;
+    text-align: right;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-links li:last-child a {
+    border-bottom: none; /* Eliminar borde del último elemento */
+}
+
+.nav-links li a:hover {
+    background-color: #2c2c2c;
+    color: #ffcc00; /* Color de acento para hover */
+}
+
+/* Estado activo (mostrado) */
+.nav-links.active {
+    transform: translateX(0);
+}
+
+/* Hamburger Icon (siempre visible) */
+.hamburger {
+    display: block; /* Ahora se ve en todas las pantallas */
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+    top: 8px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 16px;
+}
+
+/* Animación del ícono de cierre (X) */
+.hamburger.active span:nth-child(1) {
+    top: 8px;
+    transform: rotate(135deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    left: -60px; /* Desplazar la línea del medio */
+}
+
+.hamburger.active span:nth-child(3) {
+    top: 8px;
+    transform: rotate(-135deg);
+}
