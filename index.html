@@ -58,6 +58,9 @@
                 <img src="urbano/1.png" alt="Producto 1">
             </div>
             <p class="precio">$11</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('urbano/1.png', 'Urbano 1', '11'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('urbano/1.png', 'urbano1.png')">Descargar</button>
         </div>
 
@@ -66,6 +69,9 @@
                 <img src="halloween/5.png" alt="Producto 1">
             </div>
             <p class="precio">$11</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('halloween/5.png', 'Halloween 5', '11'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('halloween/5.png', 'halloween5.png')">Descargar</button>
         </div>
 
@@ -74,6 +80,9 @@
                 <img src="anime/2.png" alt="Producto 1">
             </div>
             <p class="precio">$11</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('anime/2.png', 'anime 2', '11'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('anime/2.png', 'anime2.png')">Descargar</button>
         </div>
 
@@ -82,6 +91,9 @@
                 <img src="navidad/8.png" alt="Producto 1">
             </div>
             <p class="precio">$9</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('navidad/8.png', 'navidad 8', '9'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('navidad/8.png', 'navidad8.png')">Descargar</button>
         </div>
         
@@ -90,6 +102,9 @@
                 <img src="basicos/3.png" alt="Producto 1">
             </div>
             <p class="precio">$8</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('basicos/3.png', 'basicos 3', '8'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('basicos/3.png', 'basicos3.png')">Descargar</button>
         </div>
         
@@ -98,6 +113,9 @@
                 <img src="vehiculos/6.png" alt="Producto 1">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/6.png', 'vehiculos 6', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/6.png', 'vehiculos6.png')">Descargar</button>
         </div>
 
@@ -113,74 +131,96 @@
     </footer>
 
     <script>
-        // Menú hamburguesa
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
+    // Menú hamburguesa
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
         });
+    });
 
-        // Cerrar menú al hacer clic en un enlace
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
+    function descargarImagenComoPNG(url, nombre) {
+        // Asegurarse de que el nombre tenga extensión .png
+        if (!nombre.endsWith('.png')) {
+            nombre = nombre.replace(/\.[^/.]+$/, "") + '.png';
+        }
+
+        fetch(url)
+            .then(resp => resp.blob())
+            .then(blob => {
+                // Si la imagen ya es PNG, la descargamos directamente
+                if (blob.type === 'image/png') {
+                    descargarBlob(blob, nombre);
+                } else {
+                    // Si no, convertimos la imagen a PNG
+                    return convertirImagenAPNG(blob, nombre);
+                }
+            })
+            .catch(() => alert('Error al descargar la imagen'));
+    }
+
+    function convertirImagenAPNG(blob, nombre) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                canvas.toBlob((pngBlob) => {
+                    descargarBlob(pngBlob, nombre);
+                    resolve();
+                }, 'image/png');
+            };
+
+            img.onerror = reject;
+            img.src = URL.createObjectURL(blob);
         });
+    }
 
-        function descargarImagenComoPNG(url, nombre) {
-            // Asegurarse de que el nombre tenga extensión .png
-            if (!nombre.endsWith('.png')) {
-                nombre = nombre.replace(/\.[^/.]+$/, "") + '.png';
-            }
+    function descargarBlob(blob, nombre) {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = nombre;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
 
-            fetch(url)
-                .then(resp => resp.blob())
-                .then(blob => {
-                    // Si la imagen ya es PNG, la descargamos directamente
-                    if (blob.type === 'image/png') {
-                        descargarBlob(blob, nombre);
-                    } else {
-                        // Si no, convertimos la imagen a PNG
-                        return convertirImagenAPNG(blob, nombre);
-                    }
-                })
-                .catch(() => alert('Error al descargar la imagen'));
-        }
+    function comprarAhora(imagePath, productName, price) {
+    const whatsappNumber = '584141914478'; // Número de contacto de INT STORE
+    
+    // 🛑 IMPORTANTE: Debes cambiar 'URL_DE_TU_SITIO/' por la URL base donde está alojada tu página (ej: https://tutienda.com/)
+    // Esto es NECESARIO para que la foto de la camisa se vea en el chat de WhatsApp.
+    const baseURL = 'https://litorr.github.io/INT_STORE_CATALOGO/'; 
+    const productURL = baseURL + imagePath; 
+    
+    // Mensaje predefinido con los detalles del producto
+    const message = `¡Hola! Estoy interesado en este diseño.
+*Categoría:* Halloween
+*Precio:* $${price}
+*Este es el diseño:* ${productURL}
 
-        function convertirImagenAPNG(blob, nombre) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-
-                img.onload = function() {
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.drawImage(img, 0, 0);
-                    canvas.toBlob((pngBlob) => {
-                        descargarBlob(pngBlob, nombre);
-                        resolve();
-                    }, 'image/png');
-                };
-
-                img.onerror = reject;
-                img.src = URL.createObjectURL(blob);
-            });
-        }
-
-        function descargarBlob(blob, nombre) {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = nombre;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-        }
-    </script>
+Quisiera ordenar y saber sobre la disponibilidad.`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappURL, '_blank');
+}
+</script>
 </body>
 </html>
