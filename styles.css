@@ -674,34 +674,28 @@ nav {
 /* ... (mantén el resto del CSS de la sección anterior) ... */
 
 /* PRODUCT CARD BUTTONS */
-.precio {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #ffcc00;
-    padding: 10px 0;
-    font-weight: bold;
-}
+
 
 /* Nuevo: Estilo para el botón de Comprar Ahora (WhatsApp) */
 .btn-comprar {
     display: block;
     width: 90%;
-    margin: 0 auto 8px auto; /* 8px de separación del precio y del botón de descargar */
+    margin:   10px auto 5px auto; /* 8px de separación del precio y del botón de descargar */
     padding: 10px;
-    background-color: #25D366; /* Verde de WhatsApp */
+    background-color: #329255; /* Verde de WhatsApp */
     color: #ffffff;
     text-align: center;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.1s;
 }
 
 .btn-comprar:hover {
-    background-color: #128C7E;
+    background-color: #6ee31a;
     transform: translateY(-2px);
 }
 
@@ -711,19 +705,20 @@ nav {
     width: 90%;
     margin: 8px auto 15px auto; /* 8px de separación del botón de compra y 15px al fondo */
     padding: 10px;
-    background-color: #ffcc00;
+    background-color: #ffffff;
     color: #000000;
     text-align: center;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     transition: background-color 0.3s;
 }
 
 .btn-descargar:hover {
-    background-color: #e6b800;
+    background-color: #952727;
+    color: white;
 }
 
 /* ... (mantén el resto del CSS incluyendo media queries) ... */

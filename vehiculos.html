@@ -45,7 +45,7 @@
 
 
 
-   <main class="container">
+  <main class="container">
     <h1 class="titulo-categoria">Colección Vehículos</h1>
     <div class="product-grid">
         <div class="product-card">
@@ -53,6 +53,9 @@
             <img src="vehiculos/1.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/1.png', 'Vehiculo 1', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/1.png', 'vehiculos1.png')">Descargar</button>
         </div>
 
@@ -61,6 +64,9 @@
             <img src="vehiculos/2.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/2.png', 'Vehiculo 2', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/2.png', 'vehiculos2.png')">Descargar</button>
         </div>
 
@@ -69,6 +75,9 @@
             <img src="vehiculos/3.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/3.png', 'Vehiculo 3', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/3.png', 'vehiculos3.png')">Descargar</button>
         </div>
         <div class="product-card">
@@ -76,6 +85,9 @@
             <img src="vehiculos/4.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/4.png', 'Vehiculo 4', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/4.png', 'vehiculos4.png')">Descargar</button>
         </div>
         <div class="product-card">
@@ -83,6 +95,9 @@
             <img src="vehiculos/5.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/5.png', 'Vehiculo 5', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/5.png', 'vehiculos5.png')">Descargar</button>
         </div>
         <div class="product-card">
@@ -90,6 +105,9 @@
             <img src="vehiculos/6.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/6.png', 'Vehiculo 6', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/6.png', 'vehiculos6.png')">Descargar</button>
         </div>
         <div class="product-card">
@@ -97,6 +115,9 @@
             <img src="vehiculos/7.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/7.png', 'Vehiculo 7', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/7.png', 'vehiculos7.png')">Descargar</button>
         </div>
         <div class="product-card">
@@ -104,6 +125,9 @@
             <img src="vehiculos/8.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/8.png', 'Vehiculo 8', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/8.png', 'vehiculos8.png')">Descargar</button>
         </div>
         <div class="product-card">
@@ -111,6 +135,9 @@
             <img src="vehiculos/9.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/9.png', 'Vehiculo 9', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/9.png', 'vehiculos9.png')">Descargar</button>
         </div>
         <div class="product-card">
@@ -118,6 +145,9 @@
             <img src="vehiculos/10.png" alt="Descripción del producto">
             </div>
             <p class="precio">$10</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('vehiculos/10.png', 'Vehiculo 10', '10'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('vehiculos/10.png', 'vehiculos10.png')">Descargar</button>
         </div>
     </div>
@@ -200,6 +230,28 @@
         a.click();
         window.URL.revokeObjectURL(url);
     }
+
+    function comprarAhora(imagePath, productName, price) {
+    const whatsappNumber = '584141914478'; // Número de contacto de INT STORE
+    
+    // 🛑 IMPORTANTE: Debes cambiar 'URL_DE_TU_SITIO/' por la URL base donde está alojada tu página (ej: https://tutienda.com/)
+    // Esto es NECESARIO para que la foto de la camisa se vea en el chat de WhatsApp.
+    const baseURL = 'https://litorr.github.io/INT_STORE_CATALOGO/'; 
+    const productURL = baseURL + imagePath; 
+    
+    // Mensaje predefinido con los detalles del producto
+    const message = `¡Hola! Estoy interesado en este diseño.
+*Categoría:* Vehiculos
+*Precio:* $${price}
+*Este es el diseño:* ${productURL}
+
+Quisiera ordenar y saber sobre la disponibilidad.`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappURL, '_blank');
+}
 </script>
 </body>
 </html>

@@ -45,7 +45,7 @@
 
 
 
-    <main class="container">
+  <main class="container">
     <h1 class="titulo-categoria">Colección Basicos</h1>
     <div class="product-grid">
         <div class="product-card">
@@ -53,6 +53,9 @@
             <img src="basicos/1.png" alt="Descripción del producto">
             </div>
             <p class="precio">$8</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('basicos/1.png', 'Basicos 1', '8'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('basicos/1.png', 'basicos1.png')">Descargar</button>
         </div>
 
@@ -61,6 +64,9 @@
             <img src="basicos/2.png" alt="Descripción del producto">
             </div>
             <p class="precio">$8</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('basicos/2.png', 'Basicos 2', '8'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('basicos/2.png', 'basicos2.png')">Descargar</button>
         </div>
 
@@ -69,6 +75,9 @@
             <img src="basicos/3.png" alt="Descripción del producto">
             </div>
             <p class="precio">$8</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('basicos/3.png', 'Basicos 3', '8'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('basicos/3.png', 'basicos3.png')">Descargar</button>
         </div>
 
@@ -77,6 +86,9 @@
             <img src="basicos/4.png" alt="Descripción del producto">
             </div>
             <p class="precio">$8</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('basicos/4.png', 'Basicos 4', '8'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('basicos/4.png', 'basicos4.png')">Descargar</button>
         </div>
 
@@ -85,6 +97,9 @@
             <img src="basicos/5.png" alt="Descripción del producto">
             </div>
             <p class="precio">$8</p>
+            <a href="#" class="btn-comprar" onclick="comprarAhora('basicos/5.png', 'Basicos 5', '8'); return false;">
+                <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
             <button class="btn-descargar" onclick="descargarImagenComoPNG('basicos/5.png', 'basicos5.png')">Descargar</button>
         </div>
     </div>
@@ -167,6 +182,28 @@
         a.click();
         window.URL.revokeObjectURL(url);
     }
+
+    function comprarAhora(imagePath, productName, price) {
+    const whatsappNumber = '584141914478'; // Número de contacto de INT STORE
+    
+    // 🛑 IMPORTANTE: Debes cambiar 'URL_DE_TU_SITIO/' por la URL base donde está alojada tu página (ej: https://tutienda.com/)
+    // Esto es NECESARIO para que la foto de la camisa se vea en el chat de WhatsApp.
+    const baseURL = 'https://litorr.github.io/INT_STORE_CATALOGO/'; 
+    const productURL = baseURL + imagePath; 
+    
+    // Mensaje predefinido con los detalles del producto
+    const message = `¡Hola! Estoy interesado en este diseño.
+*Categoría:* Basicos
+*Precio:* $${price}
+*Este es el diseño:* ${productURL}
+
+Quisiera ordenar y saber sobre la disponibilidad.`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappURL, '_blank');
+}
 </script>
 </body>
 </html>
